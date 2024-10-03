@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_03_051207) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_03_080546) do
   create_table "products", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
-    t.text "description"
+    t.text "content"
     t.integer "quantity"
     t.decimal "price", precision: 10, scale: 2
     t.boolean "available"
     t.datetime "released_at"
-    t.datetime "expiry_date"
     t.decimal "discount", precision: 5, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
 end
