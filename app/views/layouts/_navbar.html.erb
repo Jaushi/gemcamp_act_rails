@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="<%= root_path %>">Blog Post</a>
+    <a class="navbar-brand" href="<%= root_path %>">Gadget Store</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,12 +12,16 @@
                 <%= link_to 'Contact', contact_path, class: "nav-link #{'active text-light bg-dark' if action_name == 'contact' && controller_name == 'welcome'}", 'aria-current': 'page' %>
             </li>
             <li class="nav-item">
-                <%= link_to 'Posts', posts_path, class: "nav-link #{'active text-light bg-dark' if controller_path == 'posts'}", 'aria-current': 'page' %>
+                <%= link_to 'Product Posting', new_product_path, class: "nav-link #{'active text-light bg-dark' if controller_name == 'products' && action_name == 'new'}", 'aria-current': 'page' %>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="<%= search_products_path %>" method="get">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" value="<%= params[:query] %>">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <div class="input-group">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" value="<%= params[:query] %>">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </div>
+            </div>
         </form>
     </div>
 </nav>

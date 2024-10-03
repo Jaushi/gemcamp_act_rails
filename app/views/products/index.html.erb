@@ -1,7 +1,11 @@
-<h1>Products</h1>
+<h1>All Products</h1>
 
 <ul>
     <% @products.each do |product| %>
-        <li><%= product.name %> - <%= product.description %></li>
+        <li>
+            <strong><%= link_to product.name, product %></strong> - 
+            <%= product.description %> - 
+            $<%= product.price %>
+        </li>
     <% end %>
 </ul>
