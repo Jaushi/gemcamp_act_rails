@@ -1,11 +1,39 @@
-<h1>All Products</h1>
-
-<ul>
-    <% @products.each do |product| %>
-        <li>
-            <strong><%= link_to product.name, product %></strong> - 
-            <%= product.description %> - 
-            $<%= product.price %>
-        </li>
-    <% end %>
-</ul>
+<h1>Products List</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Content</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Available</th>
+            <th>Released At</th>
+            <th>Discount</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @products.each do |product| %>
+            <tr>
+                <td><%= product.id %></td>
+                <td><%= product.name %></td>
+                <td><%= product.content %></td>
+                <td><%= product.quantity %></td>
+                <td><%= number_to_currency(product.price, unit: "₱") %></td>
+                <td><%= product.available ? 'Yes' : 'No' %></td>
+                <td><%= product.released_at.strftime("%B %d, %Y %H:%M") %></td>
+                <td><%= product.discount %> %</td>
+                <td><%= product.created_at.strftime("%B %d, %Y %H:%M") %></td>
+                <td><%= product.updated_at.strftime("%B %d, %Y %H:%M") %></td>
+                <td>
+                    <%= link_to 'Show', product_path(product), class: 'btn btn-info btn-sm' %>
+                    <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning btn-sm' %>
+                    <%= button_to 'Delete', product_path(product), method: :delete, class: 'btn btn-danger btn-sm' %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
