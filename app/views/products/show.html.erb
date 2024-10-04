@@ -1,5 +1,13 @@
-<h1>Show Product ID: <%= @product.id %></h1>
+<h1>Product ID: <%= @product.id %></h1>
 <ul>
-    <li>Title: <%= @product.title %></li>
-    <li>Content: <%= @product.content %></li>
+    <li>Name: <%= @product.name %></li>
+    <ul>Content: <%= @product.content %></ul>
+    <li>Quantity: <%= @product.quantity %></li>
+    <li>Price: <%= number_to_currency(@product.price, unit: "₱") %></li>
+    <li>Available: <%= @product.available ? 'Yes' : 'No' %></li>
+    <li>Released At: <%= @product.released_at.strftime("%B %d, %Y") %></li>
+    <li>Discount: <%= @product.discount %> %</li>
+    <li>Created At: <%= @product.created_at.strftime("%B %d, %Y %H:%M") %></li>
+    <li>Updated At: <%= @product.updated_at.strftime("%B %d, %Y %H:%M") %></li>
+
 </ul>
