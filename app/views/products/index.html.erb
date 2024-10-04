@@ -10,6 +10,7 @@
             <th>Available</th>
             <th>Released At</th>
             <th>Discount</th>
+            <th>Category</th>
             <th>Created At</th>
             <th>Updated At</th>
             <th>Actions</th>
@@ -26,6 +27,7 @@
                 <td><%= product.available ? 'Yes' : 'No' %></td>
                 <td><%= product.released_at.strftime("%B %d, %Y %H:%M") %></td>
                 <td><%= product.discount %> %</td>
+                <td><%= product.category.name %></td>
                 <td><%= product.created_at.strftime("%B %d, %Y %H:%M") %></td>
                 <td><%= product.updated_at.strftime("%B %d, %Y %H:%M") %></td>
                 <td>

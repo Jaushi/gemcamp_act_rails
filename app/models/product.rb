@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-    belongs_to :category, optional: true
+    belongs_to :category
     has_many :order_items
 
     validates :name, presence: { message: "- Product name can't be blank" }, length: { maximum: 255, message: "- Product name is too long (maximum is 255 characters)" }

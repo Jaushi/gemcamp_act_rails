@@ -40,5 +40,9 @@
         <%= form.label :discount, class: "form-label" %>
         <%= form.number_field :discount, step: 0.01, class: "form-control" %>
     </div>
+    <div class="mb-3">
+        <%= form.label :category_id, "Category", class: "form-label" %>
+        <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "Select a Category" }, class: "form-control" %>
+    </div>
     <%= form.submit 'Create Product', class: "btn btn-primary" %>
 <% end %>
