@@ -2,20 +2,40 @@
 
 <% if @product.errors.any? %>
     <ul>
-        <% @product.errors.each do |error| %>
-            <li><%= error.full_message %></li>
+        <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
         <% end %>
     </ul>
 <% end %>
 
 <%= form_with model: @product do |form| %>
     <div>
-        <%= form.label :title %>
-        <%= form.text_field :title %>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
     </div>
     <div>
         <%= form.label :content %>
         <%= form.text_field :content %>
+    </div>
+    <div>
+        <%= form.label :quantity %>
+        <%= form.number_field :quantity %>
+    </div>
+    <div>
+        <%= form.label :price, "Price (₱)" %>
+        <%= form.number_field :price, step: 0.01 %>
+    </div>
+    <div>
+        <%= form.label :available %>
+        <%= form.check_box :available %>
+    </div>
+    <div>
+        <%= form.label :released_at %>
+        <%= form.datetime_select :released_at %>
+    </div>
+    <div>
+        <%= form.label :discount %>
+        <%= form.number_field :discount, step: 0.01 %>
     </div>
     <%= form.submit %>
 <% end %>
