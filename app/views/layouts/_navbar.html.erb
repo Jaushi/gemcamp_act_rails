@@ -12,7 +12,7 @@
                 <%= link_to 'Contact', contact_path, class: "nav-link #{'active text-light bg-dark' if action_name == 'contact' && controller_name == 'welcome'}", 'aria-current': 'page' %>
             </li>
             <li class="nav-item">
-                <%= link_to 'Product Posting', new_product_path, class: "nav-link #{'active text-light bg-dark' if controller_name == 'products' && action_name == 'new'}", 'aria-current': 'page' %>
+                <%= link_to 'New Product Posting', new_product_path, class: "nav-link #{'active text-light bg-dark' if controller_name == 'products' && action_name == 'new'}", 'aria-current': 'page' %>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="<%= search_products_path %>" method="get">
