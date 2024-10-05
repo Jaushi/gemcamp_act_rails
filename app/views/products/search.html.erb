@@ -1,0 +1,35 @@
+<%= form_with url: products_path, method: :get, local: true do |form| %>
+    <div class="mb-3">
+        <%= form.label :name, "Name", class: "form-label" %>
+        <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+        <%= form.label :quantity_min, "Quantity (Min)", class: "form-label" %>
+        <%= form.number_field :quantity_min, class: "form-control" %>
+        <%= form.label :quantity_max, "Quantity (Max)", class: "form-label" %>
+        <%= form.number_field :quantity_max, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+        <%= form.label :price_min, "Price (Min)", class: "form-label" %>
+        <%= form.number_field :price_min, step: 0.01, class: "form-control" %>
+        <%= form.label :price_max, "Price (Max)", class: "form-label" %>
+        <%= form.number_field :price_max, step: 0.01, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+        <%= form.label :available, "Available", class: "form-label" %>
+        <%= form.check_box :available, { checked: true }, 'true', 'false' %>
+    </div>
+    <div class="mb-3">
+        <%= form.label :released_at_start, "Released At (Start)", class: "form-label" %>
+        <%= form.date_field :released_at_start, class: "form-control" %>
+        <%= form.label :released_at_end, "Released At (End)", class: "form-label" %>
+        <%= form.date_field :released_at_end, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+        <%= form.label :expired_date_start, "Expired Date (Start)", class: "form-label" %>
+        <%= form.date_field :expired_date_start, class: "form-control" %>
+        <%= form.label :expired_date_end, "Expired Date (End)", class: "form-label" %>
+        <%= form.date_field :expired_date_end, class: "form-control" %>
+    </div>
+    <%= form.submit 'Search', class: "btn btn-primary" %>
+<% end %>
