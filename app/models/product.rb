@@ -1,12 +1,62 @@
 class Product < ApplicationRecord
-    belongs_to :category
-    has_many :order_items
+  belongs_to :category
+  has_many :order_items
 
-    validates :name, presence: { message: "- Product name can't be blank" }, length: { maximum: 255, message: "- Product name is too long (maximum is 255 characters)" }
-    validates :content, presence: { message: "- Product description can't be blank" }
-    validates :quantity, presence: { message: "- Quantity can't be blank" }, numericality: { only_integer: true, greater_than_or_equal_to: 0, message: "- Quantity must be a non-negative integer" }
-    validates :price, presence: { message: "- Price can't be blank" }, numericality: { greater_than_or_equal_to: 0, message: "- Price must be a non-negative number" }
-    validates :available, inclusion: { in: [true, false], message: "- Available must be true or false" }
-    validates :released_at, presence: { message: "- Release date can't be blank" }
-    validates :discount, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, message: "- Discount must be between 0 and 100" }
+  validate :name_presence_and_length
+  validate :content_presence
+  validate :quantity_presence_and_numericality
+  validate :price_presence_and_numericality
+  validate :available_inclusion
+  validate :released_at_presence
+  validate :discount_numericality
+
+  private
+
+  def name_presence_and_length
+    if name.blank?
+      errors.add(:name, "- Product name can't be blank")
+    elsif name.length > 255
+      errors.add(:name, "- Product name is too long (maximum is 255 characters)")
+    end
+  end
+
+  def content_presence
+    if content.blank?
+      errors.add(:content, "- Product description can't be blank")
+    end
+  end
+
+  def quantity_presence_and_numericality
+    if quantity.blank?
+      errors.add(:quantity, "- Quantity can't be blank")
+    elsif !quantity.is_a?(Integer) || quantity < 0
+      errors.add(:quantity, "- Quantity must be a non-negative integer")
+    end
+  end
+
+  def price_presence_and_numericality
+    if price.blank?
+      errors.add(:price, "- Price can't be blank")
+    elsif price < 0
+      errors.add(:price, "- Price must be a non-negative number")
+    end
+  end
+
+  def available_inclusion
+    unless [true, false].include?(available)
+      errors.add(:available, "- Available must be true or false")
+    end
+  end
+
+  def released_at_presence
+    if released_at.blank?
+      errors.add(:released_at, "- Release date can't be blank")
+    end
+  end
+
+  def discount_numericality
+    if discount.present? && (discount < 0 || discount > 100)
+      errors.add(:discount, "- Discount must be between 0 and 100")
+    end
+  end
 end
